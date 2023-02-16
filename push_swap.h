@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:01:49 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/15 17:35:21 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/16 14:41:49 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ void		ft_exit(char *msg);
 void		ft_check_rules(char **av);
 
 // moves.c
-void	s(t_list *stack);
+void		s(int *a, int *b);
+void		rotate(t_list **stack);
+void		rotate_reverse(t_list **stack);
+void		p(t_list **stack_a, t_list **stack_b);
 
 #endif

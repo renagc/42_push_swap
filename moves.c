@@ -6,23 +6,61 @@
 /*   By: rgomes-c <rgomes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:09:23 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/15 17:55:19 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:00:32 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	s(t_list *stack)
+//faz swap dos primeiros
+void	s(int *a, int *b)
 {
-	t_list	*new_head;
-	t_list	*current;
-	t_list	*temp;
+	int	temp;
 
-	current = stack;
-	new_head = stack->next;
-	temp = current->next->next;
-	current->next->next = current;
-	current->next = temp;
-	current = temp;
-	stack = new_head;
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+//primeiro passa a ultimo
+void	rotate(t_list **stack)
+{
+	t_list	*first;
+	t_list	*last;
+
+	first = (*stack)->next;
+	last = ft_lstlast(*stack);
+	last->next = *stack;
+	(*stack)->next = NULL;
+	*stack = first;
+}
+
+//ultimo passa a primeiro
+void	rotate_reverse(t_list **stack)
+{
+	t_list	*first;
+	t_list	*last;
+
+	last = *stack;
+	first = ft_lstlast(*stack);
+	while (last->next->next != NULL)
+		last = last->next;
+	last->next = NULL;
+	first->next = *stack;
+	*stack = first;
+}
+
+//primeiro elemento que estiver na b
+void	p(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*first_a;
+	t_list	*first_b;
+
+	if (!(*stack_b))
+		return ;
+	first_a = (*stack_b);
+	first_b = (*stack_b)->next;
+	first_a->next = (*stack_a);
+	*stack_a = first_a;
+	*stack_b = first_b;
 }
