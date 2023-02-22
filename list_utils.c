@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-c <rgomes-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 10:03:39 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/15 12:57:07 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/22 11:36:15 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,33 @@ t_list	*ft_lstnew(int data)
 	newlist->value = data;
 	newlist->next = NULL;
 	return (newlist);
+}
+
+int	ft_lstsize(t_list *lst)
+{
+	int		i;
+	t_list	*temp;
+
+	temp = lst;
+	i = 0;
+	while (temp)
+	{
+		temp = temp -> next;
+		i++;
+	}
+	return (i);
+}
+
+void	ft_lst_print(t_list **stack)
+{
+	t_list	*temp;
+
+	temp = *stack;
+	while (*stack)
+	{
+		ft_printf("%d-", (*stack)->value);
+		*stack = (*stack)->next;
+	}
+	ft_printf("\n");
+	*stack = temp;
 }
