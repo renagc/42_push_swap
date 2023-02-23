@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 10:03:39 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/22 11:36:15 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/22 21:02:31 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,12 @@ int	ft_lstsize(t_list *lst)
 		i++;
 	}
 	return (i);
+}
+
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	new -> next = *lst;
+	*lst = new;
 }
 
 void	ft_lst_print(t_list **stack)

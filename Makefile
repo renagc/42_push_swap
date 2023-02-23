@@ -12,6 +12,7 @@ all: $(NAME)
 $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
 	$(CC) $(CFLAGS) $(SOURCES) ft_printf/libftprintf.a -o push_swap
+	rm -rf $(OBJECTS)
 
 sanita:
 	$(CC) $(SOURCES) ft_printf/libftprintf.a -fsanitize=address -g -o push_swap

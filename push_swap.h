@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:01:49 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/22 11:28:43 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/02/22 21:02:50 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ typedef struct t_list {
 	struct t_list	*next;
 }t_list;
 
+typedef struct s_cost {
+	int				pos;
+	int				min;
+	int				cost;
+	int				max;
+}t_cost;
+
 // -----------------------------  FUNCTIONS --------------------------------- //
 
 // libft_utils.c
@@ -40,6 +47,7 @@ t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_lstnew(int data);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 int			ft_lstsize(t_list *lst);
+void		ft_lstadd_front(t_list **lst, t_list *new);
 void		ft_lst_print(t_list **stack);
 
 // ft_exit.c
@@ -62,7 +70,7 @@ long int	ft_max_pos(t_list **stack);
 // sort_utils.c
 void		ft_sort_3(t_list **stack);
 void		ft_ave_to_b(t_list **stack_a, t_list **stack_b);
-int			ft_pos_cost(t_list	**stack_a, t_list **stack_b, int i);
+int			ft_pos_cost_top(t_list	**stack_a, t_list **stack_b, int i);
 int			ft_pos_min_cost(t_list **stack_a, t_list **stack_b);
 void		ft_p_to_a(t_list **stack_a, t_list **stack_b);
 
