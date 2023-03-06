@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 23:57:29 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/22 21:13:30 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/06 20:59:02 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,55 +36,48 @@ void	ft_ave_to_b(t_list **stack_a, t_list **stack_b)
 		else
 			rotate(stack_a, "ra");
 	}
-	ft_sort_3(stack_a);
 }
 
-int	ft_pos_min_cost(t_list **stack_a, t_list **stack_b)
+void	ft_push_fit_top(t_list **stack, t_list **min_cost)
 {
-	t_list	*temp_a;
-	t_list	*temp_b;
-	t_cost	cost;
+	t_list	*current;
 
-	temp_a = *stack_a;
-	temp_b = *stack_b;
-	cost.pos = 1;
-	cost.min = 0;
-	cost.max = ft_pos_cost_top(&temp_a, &temp_b, 0);
-	while (cost.pos < (ft_lstsize(temp_b) - 3))
+	current = (*stack);
+	if (ft_lstsize(*min_cost) < (ft_lstsize(*stack) / 2))
 	{
-		if (cost.max > ft_pos_cost_top(&temp_a, &temp_b, cost.pos))
+		while (current != (*min_cost))
 		{
-			cost.max = ft_pos_cost_top(&temp_a, &temp_b, cost.pos);
-			cost.min = cost.pos;
+			rotate(stack, "ra");
+			current = (*stack);
 		}
-		cost.pos++;
 	}
-	return (cost.min);
+	else
+	{
+		while (current != (*min_cost))
+		{
+			rotate_reverse(stack, "rra");
+			current = (*stack);
+		}
+	}
 }
 
-void	ft_p_to_a(t_list **stack_a, t_list **stack_b)
+void	ft_sort_list(t_list **stack_a, t_list **stack_b)
 {
-	int		moves_stack_a;
-	int		pos;
+	t_list	*temp;
 
-	moves_stack_a = 0;
-	pos = ft_pos_min_cost(stack_a, stack_b);
-	while ((*stack_b))
+	if (ft_lstsize(*stack_a) <= 3)
+		ft_sort_3(stack_a);
+	else
 	{
-		while (pos-- > 0)
-			rotate(stack_b, "rb");
-		while ((*stack_b)->value > (*stack_a)->value)
+		ft_ave_to_b(stack_a, stack_b);
+		ft_sort_3(stack_a);
+		while (*stack_b)
 		{
-			rotate(stack_a, "ra");
-			moves_stack_a++;
+			temp = ft_get_min_cost_b(stack_a, stack_b);
+			ft_push_fit_top(stack_b, &temp);
+			temp = ft_min_cost_a(stack_a, stack_b);
+			ft_push_fit_top(stack_a, &temp);
+			p(stack_a, stack_b, "pa");
 		}
-		p(stack_a, stack_b, "pa");
-		while (moves_stack_a > 0)
-		{
-			rotate_reverse(stack_a, "rra");
-			moves_stack_a--;
-		}
-		if ((*stack_b))
-			pos = ft_pos_min_cost(stack_a, stack_b);
 	}
 }

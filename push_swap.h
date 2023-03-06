@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:01:49 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/22 21:02:50 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:02:58 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,11 @@ long int	ft_max_pos(t_list **stack);
 // sort_utils.c
 void		ft_sort_3(t_list **stack);
 void		ft_ave_to_b(t_list **stack_a, t_list **stack_b);
-int			ft_pos_cost_top(t_list	**stack_a, t_list **stack_b, int i);
-int			ft_pos_min_cost(t_list **stack_a, t_list **stack_b);
-void		ft_p_to_a(t_list **stack_a, t_list **stack_b);
+void		ft_sort_list(t_list **stack_a, t_list **stack_b);
+
+// cost_utils.c
+t_list		*ft_get_min_cost_b(t_list **stack_a, t_list **stack_b);
+int			ft_get_pos_a(t_list **stack, t_list **current);
+t_list		*ft_min_cost_a(t_list **stack_a, t_list **stack_b);
 
 #endif

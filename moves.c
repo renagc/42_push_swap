@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:09:23 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/22 14:57:02 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:26:42 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	s(int *a, int *b, char *str)
 	temp = *a;
 	*a = *b;
 	*b = temp;
-	ft_printf("%s\n", str);
+	if (str)
+		ft_printf("%s\n", str);
 }
 
 //primeiro passa a ultimo
@@ -45,11 +46,19 @@ void	rotate_reverse(t_list **stack, char *str)
 
 	last = *stack;
 	first = ft_lstlast(*stack);
-	while (last->next->next != NULL)
-		last = last->next;
-	last->next = NULL;
-	first->next = *stack;
-	*stack = first;
+	if (last->next->next == NULL)
+	{
+		s(&last->value, &last->next->value, 0);
+		(*stack) = last;
+	}
+	else
+	{
+		while (last->next->next != NULL)
+			last = last->next;
+		last->next = NULL;
+		first->next = *stack;
+		*stack = first;
+	}
 	ft_printf("%s\n", str);
 }
 

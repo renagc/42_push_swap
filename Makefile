@@ -4,7 +4,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
-SOURCES = main.c list_utils.c libft_utils.c ft_exit.c rules.c moves.c calc_utils.c sort_utils.c
+SOURCES = main.c list_utils.c libft_utils.c ft_exit.c rules.c moves.c calc_utils.c sort_utils.c cost_utils.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

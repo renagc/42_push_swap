@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 10:06:33 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/23 15:09:27 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/06 17:03:21 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	main(int ac, char **av)
 	int		i;
 
 	i = 1;
+	stack_b = 0;
 	if (ac < 2)
 		ft_exit("");
 	ft_check_rules(av);
@@ -47,12 +48,6 @@ int	main(int ac, char **av)
 	stack_a = ft_lstnew(ft_atoi(av[1]));
 	while (++i < ac)
 		ft_init_stack_a(&stack_a, i, av);
-	if (ft_lstsize(stack_a) <= 3)
-		ft_sort_3(&stack_a);
-	else
-	{
-		ft_ave_to_b(&stack_a, &stack_b);
-		ft_p_to_a(&stack_a, &stack_b);
-	}
+	ft_sort_list(&stack_a, &stack_b);
 	return (0);
 }
