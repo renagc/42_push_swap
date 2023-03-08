@@ -6,16 +6,16 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 15:31:45 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/03/06 09:32:58 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:24:59 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long int	ft_sum(t_list **stack)
+long long int	ft_sum(t_list **stack)
 {
-	t_list		*temp;
-	long int	res;
+	t_list			*temp;
+	long long int	res;
 
 	res = 0;
 	temp = *stack;
@@ -27,7 +27,7 @@ long int	ft_sum(t_list **stack)
 	return (res);
 }
 
-long int	ft_average(t_list **stack)
+long long int	ft_average(t_list **stack)
 {
 	t_list		*temp;
 	long int	res;
@@ -45,7 +45,7 @@ long int	ft_average(t_list **stack)
 	return (res / len);
 }
 
-long int	ft_max_pos(t_list **stack)
+long long int	ft_max_pos(t_list **stack)
 {
 	t_list	*temp;
 	int		max;
@@ -69,24 +69,18 @@ long int	ft_max_pos(t_list **stack)
 	return (pos);
 }
 
-int	ft_pos_cost_top(t_list	**stack_a, t_list **stack_b, int i)
+t_list	*ft_stack_min(t_list **stack)
 {
-	t_list	*temp_a;
-	t_list	*temp_b;
-	int		moves;
+	t_list	*temp;
+	t_list	*min;
 
-	moves = 1;
-	temp_a = (*stack_a);
-	temp_b = (*stack_b);
-	while (i--)
+	min = (*stack);
+	temp = (*stack);
+	while (temp)
 	{
-		temp_b = temp_b->next;
-		moves++;
+		if (temp->value < min->value)
+			min = temp;
+		temp = temp->next;
 	}
-	while (temp_b->value > temp_a->value)
-	{
-		moves++;
-		temp_a = temp_a->next;
-	}
-	return (moves);
+	return (min);
 }

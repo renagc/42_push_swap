@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-c <rgomes-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 10:09:45 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/15 14:34:49 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:24:51 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,16 @@ void	ft_exit(char *msg)
 {
 	ft_printf("Error\n%s", msg);
 	exit(0);
+}
+
+void	ft_free_stack(t_list **stack)
+{
+	t_list	*temp;
+
+	while (*stack)
+	{
+		temp = *stack;
+		*stack = (*stack)->next;
+		free(temp);
+	}
 }

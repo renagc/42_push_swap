@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rules.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-c <rgomes-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 14:43:18 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/15 16:04:18 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:23:20 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,19 @@ static int	ft_check_dups(char **av)
 	return (1);
 }
 
+void	ft_is_sorted(int ac, char **av)
+{
+	int	i;
+
+	i = 0;
+	while (++i < ac)
+	{
+		if ((i + 1 < ac) && (ft_atoi(av[i]) > ft_atoi(av[i + 1])))
+			return ;
+	}
+	ft_exit("");
+}
+
 void	ft_check_rules(char **av)
 {
 	int	i;
@@ -61,10 +74,10 @@ void	ft_check_rules(char **av)
 	while (av[++i])
 	{
 		if (!ft_check_char(av[i]))
-			ft_exit("So pode ter ints");
+			ft_exit("");
 		else if (!ft_check_int(av[i]))
-			ft_exit("Ints fora dos limites");
+			ft_exit("");
 		else if (!ft_check_dups(av))
-			ft_exit("atencao aos dups");
+			ft_exit("");
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 10:03:39 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/02/22 21:02:31 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:25:36 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,4 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	new -> next = *lst;
 	*lst = new;
-}
-
-void	ft_lst_print(t_list **stack)
-{
-	t_list	*temp;
-
-	temp = *stack;
-	while (*stack)
-	{
-		ft_printf("%d-", (*stack)->value);
-		*stack = (*stack)->next;
-	}
-	ft_printf("\n");
-	*stack = temp;
 }

@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 16:56:40 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/03/06 17:33:03 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:26:39 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ t_list	*ft_get_min_cost_b(t_list **stack_a, t_list **stack_b)
 	temp_b = (*stack_b);
 	while (temp_b && ++pos)
 	{
-		if (pos <= (ft_lstsize(temp_b) / 2))
-			cost = ft_lstsize(*stack_b) - ft_lstsize(temp_b)
-				+ ft_get_pos_a(stack_a, &temp_b);
+		if (pos > ft_lstsize(*stack_b) / 2)
+			cost = ft_lstsize(temp_b);
 		else
-			cost = ft_lstsize(temp_b) + ft_get_pos_a(stack_a, &temp_b);
+			cost = ft_lstsize(*stack_b) - ft_lstsize(temp_b);
+		cost += ft_get_pos_best_friend(stack_a, &temp_b);
 		if (cost < min)
 		{
 			min = cost;
@@ -42,14 +42,13 @@ t_list	*ft_get_min_cost_b(t_list **stack_a, t_list **stack_b)
 	return (min_cost_b);
 }
 
-
 //diz se está em cima da stack ou do meio para baixo da stack a
-int	ft_get_pos_a(t_list **stack, t_list **current)
+int	ft_get_pos_best_friend(t_list **stack, t_list **current)
 {
 	int		temp;
 	t_list	*temp_stack;
 
-	temp_stack = ft_min_cost_a(stack, current);
+	temp_stack = ft_best_friend(stack, current);
 	temp = 0;
 	if (ft_lstsize(temp_stack) < (ft_lstsize(*stack) / 2))
 		temp = ft_lstsize(temp_stack);
@@ -59,7 +58,7 @@ int	ft_get_pos_a(t_list **stack, t_list **current)
 }
 
 //percorre stack a e verifica o best friend do top b
-t_list	*ft_min_cost_a(t_list **stack_a, t_list **stack_b)
+t_list	*ft_best_friend(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*temp;
 	t_list	*min_cost;
@@ -80,5 +79,7 @@ t_list	*ft_min_cost_a(t_list **stack_a, t_list **stack_b)
 		}
 		temp = temp->next;
 	}
+	if (!min_cost)
+		min_cost = ft_stack_min(stack_a);
 	return (min_cost);
 }

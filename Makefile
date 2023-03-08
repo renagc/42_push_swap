@@ -5,22 +5,29 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 SOURCES = main.c list_utils.c libft_utils.c ft_exit.c rules.c moves.c calc_utils.c sort_utils.c cost_utils.c
-
+BONUS_SRC = checker.c list_utils.c libft_utils.c ft_exit.c rules.c moves.c calc_utils.c sort_utils.c cost_utils.c
 OBJECTS = $(SOURCES:.c=.o)
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 all: $(NAME)
 $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
+	make -C ft_printf/
 	$(CC) $(CFLAGS) $(SOURCES) ft_printf/libftprintf.a -o push_swap
-	rm -rf $(OBJECTS)
 
 sanita:
 	$(CC) $(SOURCES) ft_printf/libftprintf.a -fsanitize=address -g -o push_swap
+
+bonus:
+	ar rcs $(NAME) $(BONUS _OBJ)
+	make -C ft_printf/
+	$(CC) $(BONUS_SRC) ft_printf/libftprintf.a -o checker
 
 clean:
 	$(RM) $(OBJECTS)
 
 fclean: clean
-	$(RM) $(NAME) push_swap
+	make fclean -C ft_printf/
+	$(RM) $(NAME) push_swap checker
 
 make re: fclean all

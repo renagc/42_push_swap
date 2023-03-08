@@ -6,11 +6,20 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 16:09:23 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/03/06 17:26:42 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:57:57 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+//inicia a stack
+void	ft_init_stack_a(t_list **stack_a, int i, char **av)
+{
+	t_list	*new_list;
+
+	new_list = ft_lstnew(ft_atoi(av[i]));
+	ft_lstadd_back(stack_a, new_list);
+}
 
 //faz swap dos primeiros
 void	s(int *a, int *b, char *str)
@@ -35,7 +44,8 @@ void	rotate(t_list **stack, char *str)
 	last->next = *stack;
 	(*stack)->next = NULL;
 	*stack = first;
-	ft_printf("%s\n", str);
+	if (str)
+		ft_printf("%s\n", str);
 }
 
 //ultimo passa a primeiro

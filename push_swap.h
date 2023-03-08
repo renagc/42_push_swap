@@ -6,7 +6,7 @@
 /*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:01:49 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/03/06 17:02:58 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/08 18:25:01 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,52 +29,48 @@ typedef struct t_list {
 	struct t_list	*next;
 }t_list;
 
-typedef struct s_cost {
-	int				pos;
-	int				min;
-	int				cost;
-	int				max;
-}t_cost;
-
 // -----------------------------  FUNCTIONS --------------------------------- //
 
 // libft_utils.c
-long int	ft_atoi(const char *str);
-int			ft_strcmp(const char *s1, const char *s2);
+long int		ft_atoi(const char *str);
+int				ft_strcmp(const char *s1, const char *s2);
 
 // list_utils.c
-t_list		*ft_lstlast(t_list *lst);
-t_list		*ft_lstnew(int data);
-void		ft_lstadd_back(t_list **lst, t_list *new);
-int			ft_lstsize(t_list *lst);
-void		ft_lstadd_front(t_list **lst, t_list *new);
-void		ft_lst_print(t_list **stack);
+t_list			*ft_lstlast(t_list *lst);
+t_list			*ft_lstnew(int data);
+void			ft_lstadd_back(t_list **lst, t_list *new);
+int				ft_lstsize(t_list *lst);
+void			ft_lstadd_front(t_list **lst, t_list *new);
 
 // ft_exit.c
-void		ft_exit(char *msg);
+void			ft_exit(char *msg);
+void			ft_free_stack(t_list **stack);
 
 // rules.c
-void		ft_check_rules(char **av);
+void			ft_is_sorted(int ac, char **av);
+void			ft_check_rules(char **av);
 
 // moves.c
-void		s(int *a, int *b, char *str);
-void		rotate(t_list **stack, char *str);
-void		rotate_reverse(t_list **stack, char *str);
-void		p(t_list **stack_a, t_list **stack_b, char *str);
+void			s(int *a, int *b, char *str);
+void			rotate(t_list **stack, char *str);
+void			rotate_reverse(t_list **stack, char *str);
+void			p(t_list **stack_a, t_list **stack_b, char *str);
+void			ft_init_stack_a(t_list **stack_a, int i, char **av);
 
 // calc_utils.c
-long int	ft_sum(t_list **stack);
-long int	ft_average(t_list **stack);
-long int	ft_max_pos(t_list **stack);
+long long int	ft_sum(t_list **stack);
+long long int	ft_average(t_list **stack);
+long long int	ft_max_pos(t_list **stack);
+t_list			*ft_stack_min(t_list **stack);
 
 // sort_utils.c
-void		ft_sort_3(t_list **stack);
-void		ft_ave_to_b(t_list **stack_a, t_list **stack_b);
-void		ft_sort_list(t_list **stack_a, t_list **stack_b);
+void			ft_sort_3(t_list **stack);
+void			ft_ave_to_b(t_list **stack_a, t_list **stack_b);
+void			ft_sort_list(t_list **stack_a, t_list **stack_b);
 
 // cost_utils.c
-t_list		*ft_get_min_cost_b(t_list **stack_a, t_list **stack_b);
-int			ft_get_pos_a(t_list **stack, t_list **current);
-t_list		*ft_min_cost_a(t_list **stack_a, t_list **stack_b);
+t_list			*ft_get_min_cost_b(t_list **stack_a, t_list **stack_b);
+int				ft_get_pos_best_friend(t_list **stack, t_list **current);
+t_list			*ft_best_friend(t_list **stack_a, t_list **stack_b);
 
 #endif
