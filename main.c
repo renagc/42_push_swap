@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-c <rgomes-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 10:06:33 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/03/14 08:12:55 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/14 17:13:04 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int	main(int ac, char **av)
 	stack_b = 0;
 	if (ac == 1)
 		exit(0);
-	else if (ac < 2)
-		ft_exit("");
 	ft_check_rules(av);
 	ft_is_sorted(ac, av);
 	stack_a = ft_lstnew(ft_atoi(av[1]));
