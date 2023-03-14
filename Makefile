@@ -18,16 +18,11 @@ $(NAME): $(OBJECTS)
 sanita:
 	$(CC) $(SOURCES) ft_printf/libftprintf.a -fsanitize=address -g -o push_swap
 
-bonus:
-	ar rcs $(NAME) $(BONUS _OBJ)
-	make -C ft_printf/
-	$(CC) $(BONUS_SRC) ft_printf/libftprintf.a -o checker
-
 clean:
 	$(RM) $(OBJECTS)
 
 fclean: clean
 	make fclean -C ft_printf/
-	$(RM) $(NAME) push_swap checker
+	$(RM) $(NAME) push_swap
 
 make re: fclean all
