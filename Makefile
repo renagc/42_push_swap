@@ -16,6 +16,7 @@ $(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) $(SOURCES) ft_printf/libftprintf.a -o push_swap
 
 sanita:
+	make -C ft_printf/
 	$(CC) $(SOURCES) ft_printf/libftprintf.a -fsanitize=address -g -o push_swap
 
 clean:

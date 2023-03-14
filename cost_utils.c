@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cost_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rgomes-c <rgomes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 16:56:40 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/03/08 17:26:39 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/14 11:46:55 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ t_list	*ft_get_min_cost_b(t_list **stack_a, t_list **stack_b)
 	t_list	*temp_b;
 
 	pos = 0;
-	min_cost_b = 0;
 	min = 2147483647;
 	temp_b = (*stack_b);
+	min_cost_b = 0;
 	while (temp_b && ++pos)
 	{
-		if (pos > ft_lstsize(*stack_b) / 2)
-			cost = ft_lstsize(temp_b);
-		else
+		if (pos <= ft_lstsize(*stack_b) / 2)
 			cost = ft_lstsize(*stack_b) - ft_lstsize(temp_b);
+		else
+			cost = ft_lstsize(temp_b);
 		cost += ft_get_pos_best_friend(stack_a, &temp_b);
 		if (cost < min)
 		{
@@ -79,7 +79,5 @@ t_list	*ft_best_friend(t_list **stack_a, t_list **stack_b)
 		}
 		temp = temp->next;
 	}
-	if (!min_cost)
-		min_cost = ft_stack_min(stack_a);
 	return (min_cost);
 }

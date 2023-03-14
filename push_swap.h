@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rgomes-c <rgomes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:01:49 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/03/08 18:25:01 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/14 11:15:30 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_list			*ft_lstnew(int data);
 void			ft_lstadd_back(t_list **lst, t_list *new);
 int				ft_lstsize(t_list *lst);
 void			ft_lstadd_front(t_list **lst, t_list *new);
+void			ft_printf_lst(t_list *lst);
 
 // ft_exit.c
 void			ft_exit(char *msg);

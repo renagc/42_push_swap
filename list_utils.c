@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgomes-c <rgomes-c@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: rgomes-c <rgomes-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 10:03:39 by rgomes-c          #+#    #+#             */
-/*   Updated: 2023/03/08 17:25:36 by rgomes-c         ###   ########.fr       */
+/*   Updated: 2023/03/14 11:43:03 by rgomes-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,17 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	new -> next = *lst;
 	*lst = new;
+}
+
+void	ft_printf_lst(t_list *lst)
+{
+	t_list	*temp;
+
+	temp = lst;
+	while (temp)
+	{
+		printf("%d-", temp->value);
+		temp = temp->next;
+	}
+	printf("\n");
 }
